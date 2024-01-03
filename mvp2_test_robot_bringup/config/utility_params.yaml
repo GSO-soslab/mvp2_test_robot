@@ -1,6 +1,6 @@
 /**/imu_ned_enu_node:
     ros__parameters:
-      roll_offset: 3.1415926
+      roll_offset: 3.1415926s
       pitch_offset: 0.0
       yaw_offset: 1.5707
       roll_reverse: 1.0
