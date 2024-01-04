@@ -1,51 +1,40 @@
 import os
 
 from ament_index_python.packages import get_package_share_directory
-
 from launch import LaunchDescription
-from launch_ros.actions import Node
-
+from launch.actions import IncludeLaunchDescription
+from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch.actions import DeclareLaunchArgument
+from launch.substitutions import LaunchConfiguration, PythonExpression
 
 
 def generate_launch_description():
-    robot_name = 'mvp2_test_robot'
-    robot_bringup = robot_name + '_bringup'
-    sim_world = 'test.scn'
+    arg_robot_name = 'mvp2_test_robot'
+    robot_bringup = arg_robot_name + '_bringup'
 
 
-    world_of_stonefish_dir = get_package_share_directory('world_of_stonefish')
+    simulation = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([os.path.join(get_package_share_directory(robot_bringup), 'launch','include','simulation.launch.py')]),
+        launch_arguments = {'arg_robot_name': arg_robot_name}.items()    
+    )
 
-    robot_param_path = os.path.join(
-        get_package_share_directory(robot_bringup),
-        'config'
-        )
-    sim_param_file = os.path.join(robot_param_path, 'sim_params.yaml') 
+    mvp_utility = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([os.path.join(get_package_share_directory(robot_bringup), 'launch','include','mvp_utility.launch.py')]),
+        launch_arguments = {'arg_robot_name': arg_robot_name}.items()  
+    )
 
-    mvp_utility_file = os.path.join(robot_param_path, 'utility_params.yaml') 
-
+    localization = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([os.path.join(get_package_share_directory(robot_bringup), 'launch','include','localization.launch.py')]),
+        launch_arguments = {'arg_robot_name': arg_robot_name}.items()  
+    )
+    
+    description = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([os.path.join(get_package_share_directory(robot_bringup), 'launch','include','description.launch.py')]),
+        launch_arguments = {'arg_robot_name': arg_robot_name}.items()  
+    )
     return LaunchDescription([
-        # Node(
-        #     package="stonefish_mvp2",
-        #     executable="stonefish_simulator",
-        #     name="stonefish_simulator",
-        #     output="screen",
-        #     parameters= [
-        #         {'data_path': os.path.join(world_of_stonefish_dir, 'data/')},
-        #         {'scenario_path': os.path.join(world_of_stonefish_dir, 'world', sim_world) },
-        #         sim_param_file
-        #     ],
-        # ),
-
-        Node(
-            package="mvp_utility",
-            executable="imu_ned_enu_node",
-            namespace=robot_name,
-            name="imu_ned_enu_node",
-            remappings=[
-                    ('imu_in/data', 'imu/stonefish/data'),
-                    ('imu_out/data', 'imu/data'),
-            ],
-            parameters=[mvp_utility_file]
-        )
-
-])
+        simulation,
+        mvp_utility,
+        localization,
+        description
+    ])
