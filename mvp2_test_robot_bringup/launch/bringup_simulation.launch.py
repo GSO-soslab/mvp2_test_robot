@@ -6,35 +6,50 @@ from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.actions import DeclareLaunchArgument
 from launch.substitutions import LaunchConfiguration, PythonExpression
+import time
+
+
 
 
 def generate_launch_description():
     arg_robot_name = 'mvp2_test_robot'
     robot_bringup = arg_robot_name + '_bringup'
 
-
+    # simulation
     simulation = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(get_package_share_directory(robot_bringup), 'launch','include','simulation.launch.py')]),
         launch_arguments = {'arg_robot_name': arg_robot_name}.items()    
     )
 
+    #MVP utility
     mvp_utility = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(get_package_share_directory(robot_bringup), 'launch','include','mvp_utility.launch.py')]),
         launch_arguments = {'arg_robot_name': arg_robot_name}.items()  
     )
 
+    # robot localization
     localization = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(get_package_share_directory(robot_bringup), 'launch','include','localization.launch.py')]),
         launch_arguments = {'arg_robot_name': arg_robot_name}.items()  
     )
     
+    #description URDF
     description = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(get_package_share_directory(robot_bringup), 'launch','include','description.launch.py')]),
         launch_arguments = {'arg_robot_name': arg_robot_name}.items()  
     )
+
+
+    #mvp_control
+    mvp_control = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([os.path.join(get_package_share_directory(robot_bringup), 'launch','include','mvp_control.launch.py')]),
+        launch_arguments = {'arg_robot_name': arg_robot_name}.items()  
+    )
+
     return LaunchDescription([
         simulation,
         mvp_utility,
         localization,
-        description
+        description,
+        mvp_control
     ])

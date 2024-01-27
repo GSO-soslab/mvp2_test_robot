@@ -1,0 +1,7 @@
+/mvp2_test_robot/mvp2_control_ros_node:
+  ros__parameters:
+    generator_type: tf
+    control_frequency: 20.0
+    enabled: false
+    cg_link: cg_link
+    world_link: world_ned
