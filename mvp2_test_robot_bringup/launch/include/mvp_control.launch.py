@@ -24,7 +24,7 @@ def generate_launch_description():
 
     return LaunchDescription([
 
-        TimerAction(period=20.0,
+        TimerAction(period=5.0,
             actions=[
                     Node(
                         package="mvp2_control",
