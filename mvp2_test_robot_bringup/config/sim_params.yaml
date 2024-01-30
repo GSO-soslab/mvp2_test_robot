@@ -1,6 +1,6 @@
 stonefish_simulator:
   ros__parameters:
-      window_width: 1600
-      window_height: 1200
+      window_width: 1200
+      window_height: 800
       sim_quality: high
       sim_rate: 100

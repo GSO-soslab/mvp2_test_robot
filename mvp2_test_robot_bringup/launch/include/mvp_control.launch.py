@@ -36,7 +36,7 @@ def generate_launch_description():
                         parameters=[
                             {'config_file': mvp_control_config_file},
                             {'tf_prefix': robot_name},
-                            {'odometry_source': robot_name + '/odometry/filtered'},
+                            {'odometry_source': '/'+ robot_name + '/odometry/filtered'},
                             mvp_control_param_file
                             ]
                         )
