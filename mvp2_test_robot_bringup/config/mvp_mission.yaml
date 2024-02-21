@@ -1,0 +1,5 @@
+/mvp2_test_robot/mvp2_helm_node:
+  ros__parameters:
+    frequency: 20.0
+    cg_link: cg_link
+    local_link: world_ned

@@ -1,0 +1,33 @@
+finite_state_machine:
+  start:
+    initial: true
+    control_mode: idle
+    transitions: [kill, direct_control]
+  
+  # survey_3d:
+  #   control_mode: flight
+  #   transitions: [start, kill]
+  
+  kill:
+    control_mode: idle
+    transitions: [start]
+  
+  direct_control:
+    control_mode: hold_dof
+    transitions: [start, kill]
+
+behaviors:
+  # bvh_path_3d:
+  #   plugin: helm::PathFollowing3D
+  #   priority:
+  #     survey_3d: 1
+  
+  # bvh_periodic_surfacing:
+  #   plugin: helm::PeriodicSurface
+  #   priority:
+  #     survey_3d: 2
+
+  bvh_direct_control:
+    plugin: helm::DirectControlCont
+    priority:
+      direct_control: 1
