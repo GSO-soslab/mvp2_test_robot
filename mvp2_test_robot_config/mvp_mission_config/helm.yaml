@@ -28,6 +28,6 @@ behaviors:
   #     survey_3d: 2
 
   bvh_direct_control:
-    plugin: helm::DirectControlCont
+    plugin: helm::DirectControl
     priority:
       direct_control: 1
