@@ -25,4 +25,11 @@ thruster_ids:
     force_topic: control/force/surge
     limits: [-10.0, 60.0] #[min, max]
     polynomials: [0.3281, 44.1281, 22.8029, 84.2361, -6.5710, -41.5185]
-    
+
+fin_ids:
+  top_fin:
+    control_tf: top_fin_base_link
+    joint_state_topic: fin_joints
+    joint_name: top_fin_servo_joint
+    limits: [-0.175, 0.175] #radians of the aoa
+    coefficients: [1, 0.1, 1] # [a, b, c] ##Drag = a*aoa^2 + b, Lift = c*aoa
