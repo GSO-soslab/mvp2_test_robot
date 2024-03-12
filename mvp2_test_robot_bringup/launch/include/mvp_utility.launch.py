@@ -11,32 +11,7 @@ def generate_launch_description():
     robot_name = 'mvp2_test_robot'
     robot_bringup = robot_name + '_bringup'
 
-    robot_param_path = os.path.join(
-        get_package_share_directory(robot_bringup),
-        'config'
-        )
-
-    mvp_utility_param_file = os.path.join(robot_param_path, 'utility_params.yaml') 
-
     return LaunchDescription([
-        #mvp utility node
-        TimerAction(period=1.0,
-            actions=[
-                    Node(
-                        package="mvp_utility",
-                        executable="imu_ned_enu_node",
-                        namespace=robot_name,
-                        name="imu_ned_enu_node",
-                        remappings=[
-                                ('imu_in/data', 'imu/stonefish/data'),
-                                ('imu_out/data', 'imu/data'),
-                            ],
-                        parameters=[
-                            {'frame_id': robot_name + '/imu'},
-                            mvp_utility_param_file
-                            ]
-                    )
-            ]),
                     
         Node(
             package="mvp_utility",

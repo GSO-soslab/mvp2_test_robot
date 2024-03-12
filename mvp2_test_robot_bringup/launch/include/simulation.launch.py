@@ -21,6 +21,13 @@ def generate_launch_description():
     window_res_y = "800"
     rendering_quality ="high"
 
+    robot_param_path = os.path.join(
+        get_package_share_directory(robot_bringup),
+        'config'
+        )
+
+    stonefish_driver_param_file = os.path.join(robot_param_path, 'sim_params.yaml') 
+
     return LaunchDescription([
         # simulation node
         Node(
@@ -29,6 +36,21 @@ def generate_launch_description():
             name="stonefish_simulator",
             output="screen",
             arguments=[simulation_data, scenario_desc, simulation_rate, window_res_x, window_res_y, rendering_quality]
+        ),
+
+        Node(
+            package="world_of_stonefish",
+            executable="imu_driver_node",
+            namespace=robot_name,
+            name="imu_driver_node",
+            remappings=[
+                    ('imu_in/data', 'imu/stonefish/data'),
+                    ('imu_out/data', 'imu/data'),
+                ],
+            parameters=[
+                {'frame_id': robot_name + '/imu'},
+                stonefish_driver_param_file
+                ]
         )
 
-])
+    ])

@@ -1,6 +1,8 @@
-stonefish_simulator:
-  ros__parameters:
-      window_width: 1200
-      window_height: 800
-      sim_quality: high
-      sim_rate: 100
+/mvp2_test_robot/imu_driver_node:
+    ros__parameters:
+      roll_offset: 3.1415926
+      pitch_offset: 0.0
+      yaw_offset: 1.5707
+      roll_reverse: 1.0
+      pitch_reverse: -1.0
+      yaw_reverse: -1.0
