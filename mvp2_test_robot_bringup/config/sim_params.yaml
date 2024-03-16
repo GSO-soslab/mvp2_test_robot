@@ -6,3 +6,12 @@
       roll_reverse: 1.0
       pitch_reverse: -1.0
       yaw_reverse: -1.0
+
+/mvp2_test_robot/thruster_driver_node:
+    ros__parameters:
+      thruster_pub_topic: /mvp2_test_robot/stonefish/thruster_command
+      thruster_length: 4
+      thruster_sub_topics: [/mvp2_test_robot/control/thruster/surge, 
+                          /mvp2_test_robot/control/thruster/sway_bow, 
+                          /mvp2_test_robot/control/thruster/heave_stern, 
+                          /mvp2_test_robot/control/thruster/heave_bow]

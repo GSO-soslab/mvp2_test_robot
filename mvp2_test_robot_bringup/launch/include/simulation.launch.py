@@ -51,6 +51,16 @@ def generate_launch_description():
                 {'frame_id': robot_name + '/imu'},
                 stonefish_driver_param_file
                 ]
+        ),
+
+        Node(
+            package="world_of_stonefish",
+            executable="thruster_driver_node",
+            namespace=robot_name,
+            name="thruster_driver_node",
+            prefix=['stdbuf -o L'],
+            output="screen",
+            parameters=[stonefish_driver_param_file]
         )
 
     ])
