@@ -14,25 +14,61 @@ def generate_launch_description():
 
     world_of_stonefish_dir = get_package_share_directory('world_of_stonefish')
 
+    simulation_data = os.path.join(world_of_stonefish_dir, 'data/')
+    scenario_desc = os.path.join(world_of_stonefish_dir, 'world', sim_world)
+    simulation_rate = "100"
+    window_res_x = "1600"
+    window_res_y = "800"
+    rendering_quality ="high"
+
     robot_param_path = os.path.join(
         get_package_share_directory(robot_bringup),
         'config'
         )
-    sim_param_file = os.path.join(robot_param_path, 'sim_params.yaml') 
 
+    stonefish_driver_param_file = os.path.join(robot_param_path, 'sim_params.yaml') 
 
     return LaunchDescription([
         # simulation node
         Node(
-            package="stonefish_mvp2",
+            package="stonefish_ros2",
             executable="stonefish_simulator",
             name="stonefish_simulator",
             output="screen",
-            parameters= [
-                {'data_path': os.path.join(world_of_stonefish_dir, 'data/')},
-                {'scenario_path': os.path.join(world_of_stonefish_dir, 'world', sim_world) },
-                sim_param_file
-            ],
+            arguments=[simulation_data, scenario_desc, simulation_rate, window_res_x, window_res_y, rendering_quality]
+        ),
+
+        Node(
+            package="world_of_stonefish",
+            executable="imu_driver_node",
+            namespace=robot_name,
+            name="imu_driver_node",
+            remappings=[
+                    ('imu_in/data', 'imu/stonefish/data'),
+                    ('imu_out/data', 'imu/data'),
+                ],
+            parameters=[
+                {'frame_id': robot_name + '/imu'},
+                stonefish_driver_param_file
+                ]
+        ),
+
+        Node(
+            package="world_of_stonefish",
+            executable="thruster_driver_node",
+            namespace=robot_name,
+            name="thruster_driver_node",
+            prefix=['stdbuf -o L'],
+            output="screen",
+            parameters=[stonefish_driver_param_file]
+        ),
+
+        Node(
+            package="world_of_stonefish",
+            executable="dvl_driver_node",
+            namespace=robot_name,
+            name="dvl_driver_node",
+            parameters=[stonefish_driver_param_file]
         )
 
-])
+    ])
