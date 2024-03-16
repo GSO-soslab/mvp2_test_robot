@@ -15,3 +15,8 @@
                           /mvp2_test_robot/control/thruster/sway_bow, 
                           /mvp2_test_robot/control/thruster/heave_stern, 
                           /mvp2_test_robot/control/thruster/heave_bow]
+
+/mvp2_test_robot/dvl_driver_node:
+    ros__parameters:
+      dvl_in: /mvp2_test_robot/dvl/stonefish/raw
+      dvl_out: /mvp2_test_robot/dvl/twist
