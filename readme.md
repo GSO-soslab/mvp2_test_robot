@@ -17,7 +17,7 @@ This is a mockup AUV for ROS2-MVP framework development.
     ## Installation
     ### Stonefish Simulator
     We use [Stonefish](https://github.com/patrykcieslak/stonefish) Simulator for our system development.
-    Our configuration is tested with our forked Stonefish, which may sometimes lack behind the original repository. We will make sure we are up-to-date with the original repository.
+    Our configuration is tested with our forked Stonefish, which may sometimes lack behind the original repository. We will make sure we are up-to-date with the [original repository](https://github.com/patrykcieslak/stonefish).
     #### Installatin
     - Download the stonefish repository
             ```
