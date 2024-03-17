@@ -1,4 +1,4 @@
-# MVP2 Test Rotbo
+# MVP2 Test Robot
 ## Introduction
 This is a mockup AUV for ROS2-MVP framework development.
 - Tested environment
