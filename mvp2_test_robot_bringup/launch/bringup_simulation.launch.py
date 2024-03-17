@@ -21,12 +21,6 @@ def generate_launch_description():
         launch_arguments = {'arg_robot_name': arg_robot_name}.items()    
     )
 
-    #MVP utility
-    mvp_utility = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([os.path.join(get_package_share_directory(robot_bringup), 'launch','include','mvp_utility.launch.py')]),
-        launch_arguments = {'arg_robot_name': arg_robot_name}.items()  
-    )
-
     # robot localization
     localization = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(get_package_share_directory(robot_bringup), 'launch','include','localization.launch.py')]),
@@ -55,7 +49,6 @@ def generate_launch_description():
 
     return LaunchDescription([
         simulation,
-        mvp_utility,
         localization,
         description,
         mvp_control
