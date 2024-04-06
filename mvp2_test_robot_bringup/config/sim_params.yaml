@@ -16,6 +16,13 @@
                           /mvp2_test_robot/control/thruster/heave_stern, 
                           /mvp2_test_robot/control/thruster/heave_bow]
 
+/mvp2_test_robot/servo_driver_node:
+    ros__parameters:
+      servo_pub_topic: /mvp2_test_robot/fins/desired_joint_states
+      servo_length: 1
+      servo_sub_topics: [/mvp2_test_robot/control/fin/rudder]
+      servo_joint_names: [mvp2_test_robot/rudder_joint]
+
 /mvp2_test_robot/dvl_driver_node:
     ros__parameters:
       dvl_in: /mvp2_test_robot/dvl/stonefish/raw
