@@ -2,10 +2,10 @@ control_modes:
   idle: false
 
   teleop:
-    # z:        {p: 20.0,    i: 2.0 ,  d: 5.0,  i_max: 30, i_min: -30}
-    # u:        {p: 50.0,    i: 10.0,   d: 0.0,   i_max: 30, i_min: -30}
-    # pitch:    {p: 10.0,    i: 0.0,   d: 10.0,  i_max: 20, i_min: -20}
-    yaw:      {p: 5.0,    i: 0.0,   d: 0.0,  i_max: 30, i_min: -30}
+    z:        {p: 20.0,    i: 2.0 ,  d: 5.0,  i_max: 30, i_min: -30}
+    u:        {p: 50.0,    i: 10.0,   d: 0.0,   i_max: 30, i_min: -30}
+    pitch:    {p: 30.0,   i: 0.5,  d: 1.0,  i_max: 20, i_min: -20}
+    yaw:      {p: 10.0,   i: 0.2,   d: 5.0,  i_max: 20, i_min: -20}
 
   flight:
     # z:        {p: 20.0,    i: 2.0 ,  d: 5.0,  i_max: 30, i_min: -30}
