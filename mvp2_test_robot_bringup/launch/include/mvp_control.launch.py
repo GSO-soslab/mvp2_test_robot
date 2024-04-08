@@ -27,10 +27,10 @@ def generate_launch_description():
         TimerAction(period=5.0,
             actions=[
                     Node(
-                        package="mvp2_control",
-                        executable="mvp2_control_ros_node",
+                        package="mvp_control",
+                        executable="mvp_control_ros_node",
                         namespace=robot_name,
-                        name="mvp2_control_ros_node",
+                        name="mvp_control_ros_node",
                         prefix=['stdbuf -o L'],
                         output="screen",
                         parameters=[
