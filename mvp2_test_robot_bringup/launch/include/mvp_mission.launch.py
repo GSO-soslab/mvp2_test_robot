@@ -8,37 +8,46 @@ from launch.actions import TimerAction
 
 
 def generate_launch_description():
+
+    # robot
     robot_name = 'mvp2_test_robot'
-    robot_bringup = robot_name + '_bringup'
-    robot_config = robot_name + '_config'
-    robot_param_path = os.path.join(
-        get_package_share_directory(robot_bringup),
+
+    # mvp_mission param
+    mvp_mission_path = os.path.join(
+        get_package_share_directory('mvp2_test_robot_bringup'),
         'config'
         )
+    mvp_mission_param_file = os.path.join(mvp_mission_path, 'mvp_mission.yaml') 
     
-    robot_config_path = os.path.join(
-        get_package_share_directory(robot_config)
-    )
-    mvp_mission_config_file = os.path.join(robot_config_path, 'mvp_mission_config', 'helm.yaml') 
-    mvp_mission_param_file = os.path.join(robot_param_path, 'mvp_mission.yaml') 
+    # behaviors param
+    bhv_teleop_param_file = os.path.join(mvp_mission_path, 'bhv_teleop.yaml') 
 
+    # helm param 
+    mvp_helm_path = os.path.join(
+        get_package_share_directory('mvp2_test_robot_config'),
+        'mvp_mission_config'
+        )
+    mvp_helm_config_file = os.path.join(mvp_helm_path, 'helm.yaml') 
+
+    # launch the node
     return LaunchDescription([
 
         TimerAction(period=0.0,
             actions=[
                     Node(
                         package="mvp_helm",
-                        executable="mvp2_helm_node",
+                        executable="mvp_helm",
                         namespace=robot_name,
-                        name="mvp2_helm_node",
+                        name="mvp_helm",
                         prefix=['stdbuf -o L'],
                         output="screen",
                         parameters=[
-                            {'helm_config_file': mvp_mission_config_file},
+                            {'helm_config_file': mvp_helm_config_file},
                             {'tf_prefix': robot_name},
-                            mvp_mission_param_file
-                            ]
-                        )
+                            mvp_mission_param_file,
+                            bhv_teleop_param_file
+                        ]
+                    )
             ])
         
 ])
