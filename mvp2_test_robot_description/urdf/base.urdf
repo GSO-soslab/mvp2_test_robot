@@ -28,14 +28,14 @@
 
     <link name="imu"/>
     <joint name="imu_joint" type="fixed">
-        <origin xyz="-0.2 -0.07 0.0" rpy="3.1415926 0.0 0.0"/>
+        <origin xyz="-0.2 -0.07 0.0" rpy="0.0 0.0 0.0"/>
         <parent link="base_link"/>
         <child link="imu"/>
     </joint>
 
     <link name="imu_sf"/>
     <joint name="imu__sf_joint" type="fixed">
-        <origin xyz="-0.2 -0.07 0.0" rpy="3.1415926 0.0 0.0"/>
+        <origin xyz="-0.2 -0.07 0.0" rpy="0.0 0.0 0.0"/>
         <parent link="base_link"/>
         <child link="imu_sf"/>
     </joint>
