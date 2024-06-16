@@ -27,13 +27,15 @@
     imu0_differential: false
     imu0_relative: false
     imu0_queue_size: 100
+    imu0_remove_gravitational_acceleration: true
+    # gravitational_acceleration: -9.81
     # imu0_pose_rejection_threshold: 0.8                 # Note the difference in parameter names
     # imu0_twist_rejection_threshold: 0.8                #
     # imu0_linear_acceleration_rejection_threshold: 1.0  #
 
     # [ADVANCED] Some IMUs automatically remove acceleration due to gravity, and others don't. If yours doesn't, please set
     # this to true, and *make sure* your data conforms to REP-103, specifically, that the data is in ENU frame.
-    imu0_remove_gravitational_acceleration: true
+    
 
     #dvl data
     twist0: dvl/twist

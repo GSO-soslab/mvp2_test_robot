@@ -51,6 +51,6 @@ def generate_launch_description():
         simulation,
         localization,
         description,
-        mvp_control,
-        mvp_mission
+        mvp_control
+        # mvp_mission
     ])
