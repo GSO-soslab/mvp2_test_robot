@@ -18,4 +18,9 @@ behaviors:
   bhv_teleop:
     plugin: helm/Teleoperation
     priority:
+      teleop: 2
+  
+  bhv_direct_control:
+    plugin: helm/DirectControl
+    priority:
       teleop: 1

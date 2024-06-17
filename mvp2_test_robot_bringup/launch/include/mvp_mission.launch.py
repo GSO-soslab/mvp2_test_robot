@@ -5,7 +5,7 @@ from launch import LaunchDescription
 from launch_ros.actions import Node
 from launch.substitutions import LaunchConfiguration
 from launch.actions import TimerAction
-
+import yaml
 
 def generate_launch_description():
 
@@ -18,9 +18,18 @@ def generate_launch_description():
         'config'
         )
     mvp_mission_param_file = os.path.join(mvp_mission_path, 'mvp_mission.yaml') 
-    
-    # behaviors param
-    bhv_teleop_param_file = os.path.join(mvp_mission_path, 'bhv_teleop.yaml') 
+
+    ###################################
+    ####### behaviors param############
+    ###################################
+    bhv_param_file = os.path.join(mvp_mission_path, 'bhv_params.yaml') 
+    with open(bhv_param_file, 'r') as f:
+        bhv_params = yaml.safe_load(f)
+    # Add prefix to parameter names
+    bhv_teleop_prefix = 'bhv_teleop/'
+    bhv_teleop_prefixed_params = {bhv_teleop_prefix + key: value for key, value in bhv_params['bhv_teleop'].items()}
+
+    ######################################################################
 
     # helm param 
     mvp_helm_path = os.path.join(
@@ -45,7 +54,7 @@ def generate_launch_description():
                             {'helm_config_file': mvp_helm_config_file},
                             {'tf_prefix': robot_name},
                             mvp_mission_param_file,
-                            bhv_teleop_param_file
+                            bhv_teleop_prefixed_params
                         ]
                     )
             ])
