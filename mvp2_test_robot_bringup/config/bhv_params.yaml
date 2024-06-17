@@ -13,9 +13,8 @@ bhv_teleop:
   tele_d_depth: 0.5
 
 bhv_direct_control:
-
     # unit: meter
-    max_x: 5.0
+    max_x: 10.0
     max_y: 5.0
     max_z: 5.0
 

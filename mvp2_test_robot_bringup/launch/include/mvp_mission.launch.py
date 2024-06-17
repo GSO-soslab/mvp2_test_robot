@@ -25,10 +25,12 @@ def generate_launch_description():
     bhv_param_file = os.path.join(mvp_mission_path, 'bhv_params.yaml') 
     with open(bhv_param_file, 'r') as f:
         bhv_params = yaml.safe_load(f)
-    # Add prefix to parameter names
-    bhv_teleop_prefix = 'bhv_teleop/'
-    bhv_teleop_prefixed_params = {bhv_teleop_prefix + key: value for key, value in bhv_params['bhv_teleop'].items()}
-
+    # # Add prefix to parameter names
+    bhv_prefixed_params = {}
+    # Process each section in the YAML file
+    for bhv_name, bhv_params in bhv_params.items():
+        bhv_prefix = bhv_name + '/'  # Use section name as prefix
+        bhv_prefixed_params.update({bhv_prefix + key: value for key, value in bhv_params.items()})
     ######################################################################
 
     # helm param 
@@ -54,7 +56,7 @@ def generate_launch_description():
                             {'helm_config_file': mvp_helm_config_file},
                             {'tf_prefix': robot_name},
                             mvp_mission_param_file,
-                            bhv_teleop_prefixed_params
+                            bhv_prefixed_params
                         ]
                     )
             ])
