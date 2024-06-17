@@ -13,6 +13,8 @@ bhv_teleop:
   tele_d_depth: 0.5
 
 bhv_direct_control:
+    global_link: mvp2_test_robot/world_ned
+    child_link: mvp2_test_robot/cg_link
     # unit: meter
     max_x: 10.0
     max_y: 5.0
