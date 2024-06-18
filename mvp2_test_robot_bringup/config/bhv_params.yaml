@@ -13,8 +13,6 @@ bhv_teleop:
   tele_d_depth: 0.5
 
 bhv_direct_control:
-    global_link: mvp2_test_robot/world_ned
-    child_link: mvp2_test_robot/cg_link
     # unit: meter
     max_x: 10.0
     max_y: 5.0
@@ -59,3 +57,10 @@ bhv_direct_control:
     desired_pitch_rate: 0.0
     desired_yaw_rate: 0.0
 
+bhv_profiling:
+  no_depth_time: 10.0
+  depth_band: 0.5
+  depth_list: [5.0]
+  depth_time_list: [10.0]
+  dive_ang_list: [-0.43]
+  climb_ang_list: [0.43]

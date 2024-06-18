@@ -18,7 +18,6 @@ def generate_launch_description():
         'config'
         )
     mvp_mission_param_file = os.path.join(mvp_mission_path, 'mvp_mission.yaml') 
-
     ###################################
     ####### behaviors param############
     ###################################
