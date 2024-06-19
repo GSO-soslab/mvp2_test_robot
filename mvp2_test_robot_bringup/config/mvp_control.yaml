@@ -5,3 +5,4 @@
     enabled: false
     cg_link: cg_link
     world_link: world_ned
+    controller_no_setpoint_timeout: 5.0
