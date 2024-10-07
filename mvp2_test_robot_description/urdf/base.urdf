@@ -75,6 +75,13 @@
         <child link="ping360_link"/>
     </joint>
 
+    <link name="usbl"/>
+    <joint name="usbl_joint" type="fixed">
+        <origin xyz="0.2 0.0 0.0" rpy="3.1415926 0.0 0.0"/>
+        <parent link="base_link"/>
+        <child link="usbl"/>
+    </joint>
+
     <!-- thrusters -->
     <link name="surge_thruster_link"/>
     <joint name="surge_thruster_joint" type="fixed">
