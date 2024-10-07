@@ -58,5 +58,5 @@ def generate_launch_description():
         description,
         mvp_control,
         mvp_mission,
-        joy
+        # joy
     ])

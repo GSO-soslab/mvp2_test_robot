@@ -17,8 +17,14 @@ def generate_launch_description():
         get_package_share_directory(robot_bringup),
         'config'
         )
+
+    mag_model_path = os.path.join(get_package_share_directory('mvp_localization_utilities'),
+        'config/magnetic/'
+        )
+    
     localization_param_file = os.path.join(robot_param_path, 'localization.yaml') 
     navsat_param_file = os.path.join(robot_param_path, 'navsat.yaml') 
+
 
     return LaunchDescription([
         Node(
@@ -29,12 +35,21 @@ def generate_launch_description():
             output='screen',
             parameters=[localization_param_file],
            ),
+
         Node(
-            package='robot_localization',
-            executable='navsat_transform_node',
-            name='navsat_transform_node',
+            package='mvp_localization_utilities',
+            executable='world_odom_transform_node',
+            name='world_odom_transform_node',
             namespace=robot_name,
             output='screen',
-            parameters=[navsat_param_file],
+            prefix=['stdbuf -o L'],
+            parameters=[
+                {'tf_prefix': robot_name},
+                {'mag_model_path': mag_model_path},
+                localization_param_file
+                ],
+            remappings=[
+                    ('odometry', 'odometry/filtered'),
+                ],
            ),
 ])

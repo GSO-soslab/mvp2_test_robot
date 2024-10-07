@@ -50,10 +50,10 @@ def generate_launch_description():
             arguments = ["0.0", "0.0", "0.0", "1.571", "0.0", "3.1415", robot_name+'/world', robot_name+'/world_ned']    
         ),
 
-        Node(
-            package='tf2_ros',
-            executable='static_transform_publisher',
-            name='odom2world',
-            arguments = ["0.0", "0.0", "0.0", "0.0", "0.0", "0.0", robot_name+'/odom', robot_name+'/world']    
-        )
+        # Node(
+        #     package='tf2_ros',
+        #     executable='static_transform_publisher',
+        #     name='odom2world',
+        #     arguments = ["0.0", "0.0", "0.0", "0.0", "0.0", "0.0", robot_name+'/odom', robot_name+'/world']    
+        # )
 ])

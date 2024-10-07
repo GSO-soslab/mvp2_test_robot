@@ -77,7 +77,7 @@ def generate_launch_description():
             namespace=robot_name,
             name="pressure_sensor_node",
             parameters=[
-                {'frame_id': robot_name + '/world_ned'}]
+                {'frame_id': robot_name + '/world'}]
         )
 
     ])
