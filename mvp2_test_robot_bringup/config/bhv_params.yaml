@@ -13,49 +13,49 @@ bhv_teleop:
   tele_d_depth: 0.5
 
 bhv_direct_control:
-    # unit: meter
-    max_x: 10.0
-    max_y: 5.0
-    max_z: 5.0
+  # unit: meter
+  max_x: 10.0
+  max_y: 5.0
+  max_z: 5.0
 
-    # unit: radians 
-    max_roll: 1.5707963 
-    max_pitch: 1.5707963
-    max_yaw: 1.5707963
+  # unit: radians 
+  max_roll: 1.5707963 
+  max_pitch: 1.5707963
+  max_yaw: 1.5707963
 
-    # unit: m/s 
-    max_surge: 1.0
-    max_sway: 1.0
-    max_heave: 1.0
+  # unit: m/s 
+  max_surge: 1.0
+  max_sway: 1.0
+  max_heave: 1.0
 
-    # unit: rad/s
-    max_roll_rate: 3.1415926
-    max_pitch_rate: 3.1415926
-    max_yaw_rate: 3.1415926
+  # unit: rad/s
+  max_roll_rate: 3.1415926
+  max_pitch_rate: 3.1415926
+  max_yaw_rate: 3.1415926
 
-    ########################################
-    ############## Desire ##################
-    ########################################
+  ########################################
+  ############## Desire ##################
+  ########################################
 
-    # position
-    desired_x: 0.0
-    desired_y: 0.0
-    desired_z: 0.5
+  # position
+  desired_x: 0.0
+  desired_y: 0.0
+  desired_z: 0.5
 
-    # orientation (0.4 rad = 23 degree)
-    desired_roll: 0.0 
-    desired_pitch: 0.0
-    desired_yaw: 0.0
+  # orientation (0.4 rad = 23 degree)
+  desired_roll: 0.0 
+  desired_pitch: 0.0
+  desired_yaw: 0.0
 
-    # velocity
-    desired_surge: 0.0
-    desired_sway: 0.0
-    desired_heave: 0.0
+  # velocity
+  desired_surge: 0.0
+  desired_sway: 0.0
+  desired_heave: 0.0
 
-    # angular velocity
-    desired_roll_rate: 0.0
-    desired_pitch_rate: 0.0
-    desired_yaw_rate: 0.0
+  # angular velocity
+  desired_roll_rate: 0.0
+  desired_pitch_rate: 0.0
+  desired_yaw_rate: 0.0
 
 bhv_profiling:
   no_depth_time: 10.0
@@ -64,3 +64,15 @@ bhv_profiling:
   depth_time_list: [10.0]
   dive_ang_list: [-0.43]
   climb_ang_list: [0.43]
+
+bhv_path_following:
+  state_done: start
+  state_fail: start
+  acceptance_radius: 5.0
+  lookahead_distance: 5.0
+  overshoot_timeout: 30.0
+  surge_velocity: 0.5
+  waypoint_x: [20.0, 0.0]
+  waypoint_y: [0.0, 0.0]
+  waypoint_z: [-2.0, 0.0]
+

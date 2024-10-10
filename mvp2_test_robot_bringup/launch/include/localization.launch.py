@@ -32,7 +32,7 @@ def generate_launch_description():
             executable='ekf_node',
             name='ekf_filter_node',
             namespace=robot_name,
-            output='screen',
+            # output='screen',
             parameters=[localization_param_file],
            ),
 

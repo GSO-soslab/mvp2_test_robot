@@ -18,7 +18,7 @@ def generate_launch_description():
     scenario_desc = os.path.join(world_of_stonefish_dir, 'world', sim_world)
     simulation_rate = "100"
     window_res_x = "800"
-    window_res_y = "600"
+    window_res_y = "800"
     rendering_quality ="high"
 
     robot_param_path = os.path.join(
@@ -34,7 +34,7 @@ def generate_launch_description():
             package="stonefish_ros2",
             executable="stonefish_simulator",
             name="stonefish_simulator",
-            output="screen",
+            # output="screen",
             arguments=[simulation_data, scenario_desc, simulation_rate, window_res_x, window_res_y, rendering_quality]
         ),
 
@@ -58,8 +58,8 @@ def generate_launch_description():
             executable="thruster_driver_node",
             namespace=robot_name,
             name="thruster_driver_node",
-            prefix=['stdbuf -o L'],
-            output="screen",
+            # prefix=['stdbuf -o L'],
+            # output="screen",
             parameters=[stonefish_driver_param_file]
         ),
 

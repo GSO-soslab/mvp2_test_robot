@@ -3,7 +3,7 @@ finite_state_machine:
   start:
     initial: true
     control_mode: idle
-    transitions: [kill, teleop, profiling]
+    transitions: [kill, teleop, profiling, survey]
   
   kill:
     control_mode: idle
@@ -16,6 +16,10 @@ finite_state_machine:
   profiling:
     control_mode: 4dof
     transitions: [start, kill]
+
+  survey:
+    control_mode: 4dof
+    transitions: [start, kill, teleop]
 
 behaviors:
 
@@ -33,3 +37,8 @@ behaviors:
     plugin: helm/Bathtub
     priority:
       profiling: 1
+
+  bhv_path_following:
+    plugin: helm/PathFollowing
+    priority:
+      survey: 1

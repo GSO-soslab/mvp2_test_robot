@@ -26,7 +26,7 @@
                   true,  true,  true]
     imu0_differential: false
     imu0_relative: false
-    imu0_queue_size: 100
+    imu0_queue_size: 10
     imu0_remove_gravitational_acceleration: true
     # gravitational_acceleration: -9.81
     # imu0_pose_rejection_threshold: 0.8                 # Note the difference in parameter names
@@ -48,26 +48,16 @@
     twist0_rejection_threshold: 2.0
 
     #pressure sensor
-    # pose0: depth
-    # pose0_config: [false,  false,  true,
-    #                 false, false, false,
-    #                 false, false, false,
-    #                 false, false, false,
-    #                 false, false, false]
-    # pose0_differential: false
-    # pose0_relative: false
-    # pose0_queue_size: 5
-    # pose0_rejection_threshold: 2.0  # Note the difference in parameter name
     odom0: depth
     odom0_config: [false,  false, true,
                     false, false, false,
                     false, false, false,
-                    false, false, true,
+                    false, false, false,
                     false, false, false]
     odom0_queue_size: 2
     odom0_differential: false
     odom0_relative: false
-    odom0_pose_use_child_frame: false
+    odom0_pose_use_child_frame: true
     odom0_pose_rejection_threshold: 5.0
     odom0_twist_rejection_threshold: 1.0
 
@@ -76,13 +66,13 @@
     odom1_config: [true,  true,  false,
                     false, false, false,
                     false, false, false,
-                    false, false, true,
+                    false, false, false,
                     false, false, false]
     odom1_queue_size: 2
     odom1_differential: false
     odom1_relative: false
-    odom1_pose_use_child_frame: false
-    odom1_pose_rejection_threshold: 5.0
+    odom1_pose_use_child_frame: true
+    odom1_pose_rejection_threshold: 10.0
     odom1_twist_rejection_threshold: 1.0
 
 
@@ -137,18 +127,18 @@
     process_noise_covariance: [ 1e-1,   0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
                                 0.0,    1e-1,   0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
                                 0.0,    0.0,    1e-1,   0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
-                                0.0,    0.0,    0.0,    1e-3,   0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
-                                0.0,    0.0,    0.0,    0.0,    1e-3,   0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
-                                0.0,    0.0,    0.0,    0.0,    0.0,    1e-3,   0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
-                                0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    1e-3,    0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
-                                0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     1e-3,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
-                                0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     1e-3,   0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
-                                0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    1e-3,   0.0,    0.0,    0.0,    0.0,    0.0,
-                                0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    1e-3,   0.0,    0.0,    0.0,    0.0,
-                                0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    1e-3,   0.0,    0.0,    0.0,
-                                0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    1e-3,   0.0,    0.0,
-                                0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    1e-3,   0.0,
-                                0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    1e-3]
+                                0.0,    0.0,    0.0,    1e-1,   0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+                                0.0,    0.0,    0.0,    0.0,    1e-1,   0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+                                0.0,    0.0,    0.0,    0.0,    0.0,    1e-1,   0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+                                0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    1e-1,    0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+                                0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     1e-1,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+                                0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     1e-1,   0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+                                0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    1e-1,   0.0,    0.0,    0.0,    0.0,    0.0,
+                                0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    1e-1,   0.0,    0.0,    0.0,    0.0,
+                                0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    1e-1,   0.0,    0.0,    0.0,
+                                0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    1e-1,   0.0,    0.0,
+                                0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    1e-1,   0.0,
+                                0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    1e-1]
 
     # [ADVANCED] This represents the initial value for the state estimate error covariance matrix. Setting a diagonal
     # value (variance) to a large value will result in rapid convergence for initial measurements of the variable in

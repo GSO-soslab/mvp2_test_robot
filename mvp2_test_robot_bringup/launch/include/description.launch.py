@@ -38,7 +38,7 @@ def generate_launch_description():
             executable='robot_state_publisher',
             name='robot_state_publisher',
             namespace=robot_name,
-            output='screen',
+            # output='screen',
             parameters=[{'robot_description' : robot_desc},
                         {'frame_prefix': robot_name +'/'}],
            ),
