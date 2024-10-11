@@ -20,3 +20,4 @@
     ros__parameters:
       dvl_in: /mvp2_test_robot/dvl/stonefish/raw
       dvl_out: /mvp2_test_robot/dvl/twist
+      dvl_alt_out: /mvp2_test_robot/dvl/altitude
