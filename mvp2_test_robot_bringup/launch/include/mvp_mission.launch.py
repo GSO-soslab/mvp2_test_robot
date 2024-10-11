@@ -51,6 +51,9 @@ def generate_launch_description():
                         name="mvp_helm",
                         prefix=['stdbuf -o L'],
                         output="screen",
+                        remappings=[
+                            ('datum', 'gps/datum'),
+                        ],
                         parameters=[
                             {'helm_config_file': mvp_helm_config_file},
                             {'tf_prefix': robot_name},

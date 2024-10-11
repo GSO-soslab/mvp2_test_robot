@@ -68,11 +68,23 @@ bhv_profiling:
 bhv_path_following:
   state_done: start
   state_fail: start
-  acceptance_radius: 5.0
+  acceptance_radius: 3.0
   lookahead_distance: 5.0
   overshoot_timeout: 30.0
-  surge_velocity: 0.5
-  waypoint_x: [20.0, 0.0]
-  waypoint_y: [0.0, 0.0]
+  surge_velocity: 0.8
+  
+  sigma: 0.01 #integral gain
+  beta_gain: 2.5 #sideslip compensation gain
+
+  lookahead_adaptive_flag: true
+  lookahead_max: 15.0
+  lookahead_min: 3.0
+  lookahead_gamma: 0.5
+
+  waypoint_x: [30.0, 0.0]
+  waypoint_y: [0.0, 20.0]
   waypoint_z: [-2.0, 0.0]
+
+  waypoint_file_package: mvp2_test_robot_bringup
+  waypoint_path: config/go_to_list/
 
