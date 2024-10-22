@@ -76,7 +76,7 @@ bhv_path_following:
   sigma: 0.01 #integral gain
   beta_gain: 2.5 #sideslip compensation gain
 
-  pitch_gain: 0.1
+  pitch_gain: 0.0
   pitch_assist_band: 0.5
   max_pitch: 0.35
 
@@ -97,6 +97,6 @@ bhv_altitude_tracking:
   altitude_tracking_mode: 1  # 0: safety mode 1:bottom altitude tracking
   altitude_measurement_topic: dvl/altitude
   desired_altitude_topic: desired_altitude
-  pitch_gain: 0.1
+  pitch_gain: 0.0
   pitch_assist_band: 0.5
   max_pitch: 0.35
