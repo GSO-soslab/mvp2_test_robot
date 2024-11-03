@@ -14,7 +14,7 @@ This is a mockup AUV for ROS2-MVP framework development.
 
     - `mvp2_test_robot_description` include urdf files and rviz configuration files.
 
-    ## Installation
+    ## Simulation Related Installation
     ### Stonefish Simulator
     We use [Stonefish](https://github.com/patrykcieslak/stonefish) Simulator for our system development.
     Our configuration is tested with our forked Stonefish, which may sometimes lack behind the original repository. We will make sure we are up-to-date with the [original repository](https://github.com/patrykcieslak/stonefish).
@@ -40,6 +40,13 @@ This is a mockup AUV for ROS2-MVP framework development.
         - `make -jx`(where x is the number of threads)
         - `sudo make install`
     - For more information about stonefish please check the original [repository](https://github.com/patrykcieslak/stonefish) and the [documentation](https://stonefish.readthedocs.io/en/latest/).
+  
+    - you may need pcl library
+        ```
+        sudo apt install libpcl-dev
+        ```
+    - you may encounter build error in regarding `Sample.h` file. If so add `#include <cstdint>` in `/stonefish/Library/include/sensors/Sample.h` will solve the problem.
+
 
 ### Stonefish ROS2 wrapper
 Our code is tested with the forked Stonefish ROS2 wrapper. We will make sure we are up-to-date with the original Stonefish ROS2 wrapper.
@@ -54,9 +61,11 @@ All the simulator files related to stonefish simulator are included in the `worl
 
 - Download the repository
 
-```
-git clone --single-branch --branch jazzy-dev https://github.com/GSO-soslab/world_of_stonefish.git
-```
+    ```
+    git clone https://github.com/GSO-soslab/world_of_stonefish.git
+    cd world_of_stonefish
+    git checkout jazzy-devel
+    ```
 - Directory information
     - `data` has all the parts for the simualtor
     - `metadata` contains all stonefish settinsg for looks and materials.
@@ -64,41 +73,63 @@ git clone --single-branch --branch jazzy-dev https://github.com/GSO-soslab/world
     - `world` contains the world scenario files which will call the files in `metadata` and `vehciles`.
     - `include` and `src` have source files for stonefish sensor drivers.
 
-### MVP Framework in ROS2
-MVP frame work is our Guidance Navigation and Control framework. 
-#### Robot localization
+- The usbl driver will need a customized acomm msgs which is available here
+    ```
+    https://github.com/GSO-soslab/acomms_msgs.git
+    ```
+
+## MVP Framework in ROS2
+MVP frame work is our Guidance Navigation and Control framework.
+
+### Robot localization
 The localization part uses the `robot_localization` package that is available [here](https://github.com/cra-ros-pkg/robot_localization.git)
 - Installation
-```
-sudo apt install ros-jazzy-robot-localization
-```
+    ```
+    sudo apt install ros-jazzy-robot-localization
+    ```
+
+### MVP utilies
+This package contains utilites scripts for localization and topic conversions.
+- installation
+    ```
+    git clone https://github.com/uri-ocean-robotics/mvp_utilities.git
+    cd mvp_utilities
+    git checkout jazzy-devel
+    ```
 
 ### MVP control
 MVP control is the low-level controller we developed. It accepts desired pose and outputs thruster commands to control the vehice pose in a specific frame.
 - Installation
-```
-git clone https://github.com/uri-ocean-robotics/mvp_control.git
-git checkout jazzy-devel
-```      
+    ```
+    git clone https://github.com/uri-ocean-robotics/mvp_control.git
+    cd mvp_control
+    git checkout jazzy-devel
+    ```      
 
-
+- Install gsl library
+    ```
+    sudo apt-get install libgsl-dev
+    ```
 
 ### MVP Message
 Our MVP frame uses the MVP messages which has customized ROS message and services for the MVP framework.
 - Installation
 
-```
-git clone --single-branch --branch jazzy-devel https://github.com/uri-ocean-robotics/mvp_msgs.git
-```
+    ```
+    git clone https://github.com/uri-ocean-robotics/mvp_msgs.git
+    cd mvp_msgs
+    git checkout jazzy-devel
+    ```
 
 ### MVP mission
 This is the high level guidance system.
 We are currently migrating our ROS1 mvp_mission into ROS2 version.
 - Installation
-```
-git clone https://github.com/uri-ocean-robotics/mvp_mission.git
-git checkout jazzy-devel
-```
+    ```
+    git clone https://github.com/uri-ocean-robotics/mvp_mission.git
+    cd mvp_mission
+    git checkout jazzy-devel
+    ```
 
 ## Building the workspace
 After all the software are downloaded or installed from the previous section you can compile your ROS2 workspace.
