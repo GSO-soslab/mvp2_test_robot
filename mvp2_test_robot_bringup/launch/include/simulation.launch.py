@@ -84,7 +84,7 @@ def generate_launch_description():
             package="world_of_stonefish",
             executable="usbl_driver_node",
             namespace=robot_name,
-            name="pressure_sensor_node",
+            name="usbl_driver_node",
             # parameters=[
                 # {'frame_id': robot_name + '/world'}
                 # ]
