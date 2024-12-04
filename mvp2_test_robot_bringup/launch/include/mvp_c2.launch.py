@@ -9,7 +9,8 @@ from launch.substitutions import LaunchConfiguration
 def generate_launch_description():
     robot_name = 'mvp2_test_robot'
     robot_bringup = robot_name + '_bringup'
-
+    commander_setting_file = os.path.join(get_package_share_directory(robot_bringup), 'config', 'mvp_c2.yaml') 
+    
     return LaunchDescription([
         # serial_comm
         Node(
@@ -19,10 +20,7 @@ def generate_launch_description():
             name = 'reporter_c2_serial_comm',
             output='screen',
             prefix=['stdbuf -o L'],
-            parameters=[
-                {'port': '/dev/ttyUSB1'},
-                {'baudrate': 115200},
-            ],
+            parameters=[commander_setting_file],
             remappings=[
                 ('dccl_msg_tx', 'mvp_c2/dccl_msg_tx'),
                 ('dccl_msg_rx', 'mvp_c2/dccl_msg_rx'),
@@ -36,10 +34,7 @@ def generate_launch_description():
             name='mvp_c2_reporter',
             output='screen',
             prefix=['stdbuf -o L'],
-            parameters=[
-                {'dccl_tx_interval': 1.0},
-                {'baudrate': 115200},
-            ],
+            parameters=[commander_setting_file],
             remappings=[
                 ('local/odometry', 'odometry/filtered'),
                 ('local/geopose', 'odometry/geopose'),

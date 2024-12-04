@@ -57,10 +57,6 @@ def generate_launch_description():
         launch_arguments = {'arg_robot_name': arg_robot_name}.items()  
     )
 
-    mvp_c2 = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([os.path.join(get_package_share_directory(robot_bringup), 'launch','include','mvp_c2.launch.py')]),
-        launch_arguments = {'arg_robot_name': arg_robot_name}.items()  
-    )
 
     return LaunchDescription([
         simulation,
@@ -68,7 +64,6 @@ def generate_launch_description():
         description,
         mvp_control,
         mvp_mission,
-        mvp_c2,
         # usbl_test
         # joy
     ])
