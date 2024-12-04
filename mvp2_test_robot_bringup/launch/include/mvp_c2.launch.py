@@ -1,0 +1,50 @@
+import os
+
+from ament_index_python.packages import get_package_share_directory
+from launch import LaunchDescription
+from launch_ros.actions import Node
+from launch.substitutions import LaunchConfiguration
+
+
+def generate_launch_description():
+    robot_name = 'mvp2_test_robot'
+    robot_bringup = robot_name + '_bringup'
+
+    return LaunchDescription([
+        # serial_comm
+        Node(
+            package = 'mvp_c2',
+            namespace = robot_name,
+            executable='mvp_c2_serial_comm',
+            name = 'reporter_c2_serial_comm',
+            output='screen',
+            prefix=['stdbuf -o L'],
+            parameters=[
+                {'port': '/dev/ttyUSB1'},
+                {'baudrate': 115200},
+            ],
+            remappings=[
+                ('dccl_msg_tx', 'mvp_c2/dccl_msg_tx'),
+                ('dccl_msg_rx', 'mvp_c2/dccl_msg_rx'),
+            ]
+        ),
+        #DCCL reporter node
+        Node(
+            package = 'mvp_c2',
+            namespace = robot_name,
+            executable='mvp_c2_reporter_ros',
+            name='mvp_c2_reporter',
+            output='screen',
+            prefix=['stdbuf -o L'],
+            parameters=[
+                {'dccl_tx_interval': 1.0},
+                {'baudrate': 115200},
+            ],
+            remappings=[
+                ('local/odometry', 'odometry/filtered'),
+                ('local/geopose', 'odometry/geopose'),
+                ('joy', 'mvp_helm/bhv_teleop/joy')
+            ]
+        ),
+
+    ])
