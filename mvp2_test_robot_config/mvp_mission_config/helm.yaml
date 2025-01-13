@@ -3,7 +3,7 @@ finite_state_machine:
   start:
     initial: true
     control_mode: idle
-    transitions: [kill, teleop, profiling, survey]
+    transitions: [kill, teleop, direct_control, survey]
   
   kill:
     control_mode: idle
@@ -13,11 +13,15 @@ finite_state_machine:
     control_mode: teleop
     transitions: [start, kill] 
 
-  profiling:
-    control_mode: 4dof
-    transitions: [start, kill]
-    set_point_world_frame: world_ned
-    set_point_child_frame: float_cg_link
+  direct_control:
+    control_mode: teleop
+    transitions: [start, kill] 
+
+  # profiling:
+  #   control_mode: 4dof
+  #   transitions: [start, kill]
+  #   set_point_world_frame: world_ned
+  #   set_point_child_frame: float_cg_link
     
   survey:
     control_mode: 4dof
@@ -28,17 +32,17 @@ behaviors:
   bhv_teleop:
     plugin: helm/Teleoperation
     priority:
-      teleop: 2
+      teleop: 1
   
   bhv_direct_control:
     plugin: helm/DirectControl
     priority:
-      teleop: 1
+      direct_control: 1
 
-  bhv_profiling:
-    plugin: helm/Bathtub
-    priority:
-      profiling: 1
+  # bhv_profiling:
+  #   plugin: helm/Bathtub
+  #   priority:
+  #     profiling: 1
 
   bhv_path_following:
     plugin: helm/PathFollowing
