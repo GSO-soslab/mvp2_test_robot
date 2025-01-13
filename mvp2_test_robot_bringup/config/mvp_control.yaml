@@ -3,6 +3,6 @@
     generator_type: tf
     control_frequency: 20.0
     enabled: false
-    cg_link: cg_link
-    world_link: world_ned
+    child_link_initial: cg_link
+    world_link_initial: world_ned
     controller_no_setpoint_timeout: 1.0

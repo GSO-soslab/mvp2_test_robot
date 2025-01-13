@@ -9,18 +9,32 @@ from launch.substitutions import LaunchConfiguration
 def generate_launch_description():
     robot_name = 'mvp2_test_robot'
     robot_bringup = robot_name + '_bringup'
-    commander_setting_file = os.path.join(get_package_share_directory(robot_bringup), 'config', 'mvp_c2.yaml') 
+    reporter_setting_file = os.path.join(get_package_share_directory(robot_bringup), 'config', 'mvp_c2.yaml') 
     
     return LaunchDescription([
         # serial_comm
+        # Node(
+        #     package = 'mvp_c2',
+        #     namespace = robot_name,
+        #     executable='mvp_c2_serial_comm',
+        #     name = 'reporter_c2_serial_comm',
+        #     output='screen',
+        #     prefix=['stdbuf -o L'],
+        #     parameters=[reporter_setting_file],
+        #     remappings=[
+        #         ('dccl_msg_tx', 'mvp_c2/dccl_msg_tx'),
+        #         ('dccl_msg_rx', 'mvp_c2/dccl_msg_rx'),
+        #     ]
+        # ),
+        #udp
         Node(
             package = 'mvp_c2',
             namespace = robot_name,
-            executable='mvp_c2_serial_comm',
-            name = 'reporter_c2_serial_comm',
+            executable='mvp_c2_udp_comm',
+            name = 'reporter_c2_udp_comm',
             output='screen',
             prefix=['stdbuf -o L'],
-            parameters=[commander_setting_file],
+            parameters=[reporter_setting_file],
             remappings=[
                 ('dccl_msg_tx', 'mvp_c2/dccl_msg_tx'),
                 ('dccl_msg_rx', 'mvp_c2/dccl_msg_rx'),
@@ -34,11 +48,13 @@ def generate_launch_description():
             name='mvp_c2_reporter',
             output='screen',
             prefix=['stdbuf -o L'],
-            parameters=[commander_setting_file],
+            parameters=[reporter_setting_file],
             remappings=[
                 ('local/odometry', 'odometry/filtered'),
                 ('local/geopose', 'odometry/geopose'),
-                ('joy', 'mvp_helm/bhv_teleop/joy')
+                ('joy', 'mvp_helm/bhv_teleop/joy'),
+                ('mvp_helm/path', 'bhv_path_following/get_next_waypoints'),
+                ('mvp_helm/set_waypoints', 'bhv_path_following/update_waypoints')
             ]
         ),
 
