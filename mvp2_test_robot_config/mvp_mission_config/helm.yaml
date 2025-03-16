@@ -16,12 +16,6 @@ finite_state_machine:
   direct_control:
     control_mode: teleop
     transitions: [start, kill] 
-
-  # profiling:
-  #   control_mode: 4dof
-  #   transitions: [start, kill]
-  #   set_point_world_frame: world_ned
-  #   set_point_child_frame: float_cg_link
     
   survey:
     control_mode: 4dof
@@ -38,11 +32,6 @@ behaviors:
     plugin: helm/DirectControl
     priority:
       direct_control: 1
-
-  # bhv_profiling:
-  #   plugin: helm/Bathtub
-  #   priority:
-  #     profiling: 1
 
   bhv_path_following:
     plugin: helm/PathFollowing
