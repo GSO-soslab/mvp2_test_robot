@@ -65,5 +65,5 @@ def generate_launch_description():
         mvp_control,
         mvp_mission,
         # usbl_test
-        # joy
+        joy
     ])

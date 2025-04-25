@@ -10,14 +10,14 @@ def generate_launch_description():
     robot_name = 'mvp2_test_robot'
     robot_bringup = robot_name + '_bringup'
     
-    sim_world = 'test.scn'
+    sim_world = 'fls_world.scn'
 
     world_of_stonefish_dir = get_package_share_directory('world_of_stonefish')
 
     simulation_data = os.path.join(world_of_stonefish_dir, 'data/')
     scenario_desc = os.path.join(world_of_stonefish_dir, 'world', sim_world)
     simulation_rate = "100"
-    window_res_x = "800"
+    window_res_x = "1200"
     window_res_y = "800"
     rendering_quality ="high"
 

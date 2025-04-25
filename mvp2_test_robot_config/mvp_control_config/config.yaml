@@ -3,8 +3,8 @@ control_modes:
 
   teleop:
     z:        {p: 20.0,    i: 2.0 ,  d: 5.0,  pid_max: 30, pid_min: -30}
-    u:        {p: 50.0,    i: 10.0,   d: 0.0,   pid_max: 30, pid_min: -30}
-    pitch:    {p: 30.0,   i: 0.5,  d: 1.0,  pid_max: 20, pid_min: -20}
+    u:        {p: 50.0,    i: 20.0,   d: 0.0,   pid_max: 50, pid_min: -50}
+    pitch:    {p: 10.0,   i: 0.5,  d: 2.0,  pid_max: 20, pid_min: -20}
     yaw:      {p: 10.0,   i: 0.2,   d: 5.0,  pid_max: 20, pid_min: -20}
 
   flight:

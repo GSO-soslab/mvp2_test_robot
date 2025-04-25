@@ -10,7 +10,7 @@ bhv_teleop:
   ##LT resets desired states to zero for all.
   tele_s_surge: 2.0
   tele_s_sway: 1.0
-  tele_d_yaw: 45.0 
+  tele_d_yaw: 10.0 
   tele_d_pitch: 10.0
   tele_d_depth: 0.5
   no_joy_timeout: 500.0
@@ -82,11 +82,11 @@ bhv_path_following:
   waypoint_file_package: mvp2_test_robot_bringup
   waypoint_path: config/go_to_list/
 
-bhv_altitude_tracking:
-  desired_altitude: 5.0 #distance from the bottom always positive
-  altitude_tracking_mode: 0  # 0: safety mode 1:bottom altitude tracking
-  altitude_measurement_topic: dvl/altitude
-  desired_altitude_topic: desired_altitude
-  pitch_gain: 0.0
-  pitch_assist_band: 0.5
-  max_pitch: 0.35
+# bhv_altitude_tracking:
+#   desired_altitude: 10.0 #distance from the bottom always positive
+#   altitude_tracking_mode: 0  # 0: safety mode 1:bottom altitude tracking
+#   altitude_measurement_topic: dvl/altitude
+#   desired_altitude_topic: desired_altitude
+#   pitch_gain: 0.0
+#   pitch_assist_band: 0.5
+#   max_pitch: 0.35

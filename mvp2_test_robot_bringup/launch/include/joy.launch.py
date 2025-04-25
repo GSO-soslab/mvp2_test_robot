@@ -21,6 +21,9 @@ def generate_launch_description():
             remappings=[
                     ('joy', 'mvp_helm/bhv_teleop/joy'),
                 ],
+            parameters=[
+                {'autorepeat_rate': 0.0},
+                ],
         ),
 
     ])
