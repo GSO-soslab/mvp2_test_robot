@@ -119,4 +119,11 @@
         <child link="mbes_link_sf"/>
     </joint>
 
+    <link name="fls_link_sf"/>
+    <joint name="fls_link_joint_sf" type="fixed">
+        <origin xyz="0.0 0.0 0.0" rpy="-1.91986218 0.0 -1.57079633"/>
+        <parent link="nose_tip_link"/>
+        <child link="fls_link_sf"/>
+    </joint>
+
 </robot>
