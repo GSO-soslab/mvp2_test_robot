@@ -126,4 +126,11 @@
         <child link="fls_link_sf"/>
     </joint>
 
+    <link name="fls_link_ros"/>
+    <joint name="fls_link_joint_ros" type="fixed">
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 -1.5707963 0.0"/>
+        <parent link="fls_link_sf"/>
+        <child link="fls_link_ros"/>
+    </joint>
+
 </robot>
