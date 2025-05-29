@@ -17,18 +17,19 @@
 /mvp2_test_robot/mvp_c2_reporter:
   ros__parameters:
     dccl_tx_interval: 1.0
-    helm_state_list: ['start', 'kill', 'teleop', 'survey', 'direct_control']
+    helm_state_list: ['start', 'kill', 'teleop', 'survey', 'direct_control'] #this has to match the helm
     launch_packages: ['mvp2_test_robot_bringup', 'mvp2_test_robot_bringup']
     launch_files: ['bringup_simulation', 'bringup_mvp_mission']
-
+    gpio_devices: ['payload_24v', 'regular_payload', 'jetson']  # this needs to match the gpio manager yaml
 
 ## topside stuff
 /mvp2_test_robot/mvp_c2_commander:
   ros__parameters:
     dccl_tx_interval: 1.0
-    helm_state_list: ['start', 'kill', 'teleop', 'survey', 'direct_control']
+    helm_state_list: ['start', 'kill', 'teleop', 'survey', 'direct_control'] #this has to match the helm
     launch_packages: ['mvp2_test_robot_bringup', 'mvp2_test_robot_bringup']
     launch_files: ['bringup_simulation', 'bringup_mvp_mission']
+    gpio_devices: ['payload_24v', 'regular_payload', 'jetson']  # this needs to match the gpio manager yaml
 
 
 /mvp2_test_robot/commander_c2_udp_comm:
