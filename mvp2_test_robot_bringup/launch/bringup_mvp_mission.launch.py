@@ -59,11 +59,11 @@ def generate_launch_description():
 
 
     return LaunchDescription([
-        simulation,
-        localization,
-        description,
-        mvp_control,
-        # mvp_mission,
+        # simulation,
+        # localization,
+        # description,
+        # mvp_control,
+        mvp_mission,
         # usbl_test
         # joy
     ])

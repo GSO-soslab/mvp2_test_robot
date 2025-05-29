@@ -13,18 +13,26 @@ control_modes:
     # pitch:    {p: 10.0,    i: 0.0,   d: 10.0,  i_max: 20, i_min: -20}
     # yaw:      {p: 10.0,    i: 1.0,   d: 10.0,  i_max: 30, i_min: -30}
 
+  ##good performance
+  # 4dof:
+  #   z:        {p: 15.0,   i: 1.0,  d: 2.0,  pid_max: 40, pid_min: -40}
+  #   u:        {p: 50.0,    i: 20.0,   d: 1.0,   pid_max: 60, pid_min: -40}
+  #   pitch:    {p: 10.0,   i: 1.0,  d: 1.0,  pid_max: 40, pid_min: -40}
+  #   yaw:      {p: 10.0,   i: 0.5,   d: 10.0,  pid_max: 30, pid_min: -30}
+
+###for generating bad PID
   4dof:
-    z:        {p: 10.0,   i: 0.2 ,  d: 5.0,  pid_max: 40, pid_min: -40}
-    u:        {p: 100.0,    i: 2.0,   d: 0.0,   pid_max: 60, pid_min: -10}
-    pitch:    {p: 10.0,   i: 1.0,  d: 1.0,  pid_max: 40, pid_min: -40}
-    yaw:      {p: 15.0,   i: 2.0,   d: 5.0,  pid_max: 50, pid_min: -50}
+    z:        {p: 15.0,   i: 1.0,  d: 0.0,  pid_max: 40, pid_min: -40}
+    u:        {p: 50.0,    i: 1.0,   d: 0.0,   pid_max: 60, pid_min: -40}
+    pitch:    {p: 10.0,   i: 1.0,  d: 0.0,  pid_max: 40, pid_min: -40}
+    yaw:      {p: 10.0,   i: 1.0,   d: 0.0,  pid_max: 30, pid_min: -30}
 
 thruster_ids:
   surge:
     control_tf: surge_thruster_link
     command_topic: control/thruster/surge
     force_topic: control/force/surge
-    limits: [-10.0, 60.0] #[min, max]
+    limits: [-40.0, 60.0] #[min, max]
     polynomials: [0.3281, 44.1281, 22.8029, 84.2361, -6.5710, -41.5185]
 
   sway_bow:

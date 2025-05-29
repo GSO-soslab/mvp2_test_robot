@@ -10,7 +10,7 @@ def generate_launch_description():
     robot_name = 'mvp2_test_robot'
     robot_bringup = robot_name + '_bringup'
     
-    sim_world = 'fls_world.scn'
+    sim_world = 'test.scn'
 
     world_of_stonefish_dir = get_package_share_directory('world_of_stonefish')
 
