@@ -1,4 +1,4 @@
-/mvp2_test_robot/mvp2_helm_node:
+/mvp2_test_robot/mvp_helm:
   ros__parameters:
     frequency: 20.0
     default_child_link: cg_link

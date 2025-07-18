@@ -63,7 +63,7 @@ def generate_launch_description():
         localization,
         description,
         mvp_control,
-        # mvp_mission,
+        mvp_mission,
         # usbl_test
         # joy
     ])
