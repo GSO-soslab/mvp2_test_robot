@@ -89,6 +89,11 @@ bhv_surfacing:
   no_gps_timeout: 20.0
   surfacing_duration: 10.0
   surfacing_depth: 0.0
+  navigation_fail_state: start
+  no_imu_timeout: 10.0
+  no_dvl_timeout: 10.0
+  dvl_topic: dvl/twist
+  imu_topic: imu/data
 
 # bhv_altitude_tracking:
 #   desired_altitude: 10.0 #distance from the bottom always positive

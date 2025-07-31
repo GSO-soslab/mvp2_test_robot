@@ -3,7 +3,7 @@ finite_state_machine:
   start:
     initial: true
     control_mode: idle
-    transitions: [kill, teleop, direct_control, survey]
+    transitions: [kill, teleop, direct_control, survey, start]
   
   kill:
     control_mode: idle
