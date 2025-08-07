@@ -19,7 +19,7 @@ def generate_launch_description():
     simulation_rate = "100"
     window_res_x = "1200"
     window_res_y = "800"
-    rendering_quality ="high"
+    rendering_quality ="low"
 
     robot_param_path = os.path.join(
         get_package_share_directory(robot_bringup),
