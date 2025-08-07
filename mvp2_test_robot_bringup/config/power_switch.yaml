@@ -1,0 +1,5 @@
+/mvp2_test_robot/gpio_manager_node:
+  ros__parameters:
+    gpio_devices: [payload_24v, regular_payload, jetson]
+    #Wring PI GPIO number
+    wiringpi_gpio: [13, 12, 11]

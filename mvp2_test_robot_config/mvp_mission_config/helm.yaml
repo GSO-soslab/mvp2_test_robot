@@ -3,7 +3,7 @@ finite_state_machine:
   start:
     initial: true
     control_mode: idle
-    transitions: [kill, teleop, direct_control, survey]
+    transitions: [kill, teleop, direct_control, survey, start]
   
   kill:
     control_mode: idle
@@ -37,6 +37,11 @@ behaviors:
     plugin: helm/PathFollowing
     priority:
       survey: 1
+
+  bhv_surfacing:
+    plugin: helm/Surfacing
+    priority:
+      survey: 2
 
   # bhv_altitude_tracking:
   #   plugin: helm/AltitudeTracking
