@@ -61,6 +61,13 @@
         <child link="gps"/>
     </joint>
 
+    <link name="gps2"/>
+    <joint name="gps2_joint" type="fixed">
+        <origin xyz="-0.5 0.0 0.32" rpy="3.1415926 0.0 0.0"/>
+        <parent link="base_link"/>
+        <child link="gps2"/>
+    </joint>
+
     <link name="pressure"/>
     <joint name="pressure_joint" type="fixed">
         <origin xyz="0.3 0.0 0.05" rpy="3.1415926 0.0 0.0"/>

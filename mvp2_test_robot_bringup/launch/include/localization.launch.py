@@ -23,7 +23,6 @@ def generate_launch_description():
         )
     
     localization_param_file = os.path.join(robot_param_path, 'localization.yaml') 
-    navsat_param_file = os.path.join(robot_param_path, 'navsat.yaml') 
 
 
     return LaunchDescription([
@@ -50,6 +49,24 @@ def generate_launch_description():
                 ],
             remappings=[
                     ('odometry', 'odometry/filtered'),
+                ],
+           ),
+
+        Node(
+            package='mvp_localization_utilities',
+            executable='gps_world_odom_publisher',
+            name='gps_world_odom_publisher',
+            namespace=robot_name,
+            output='screen',
+            prefix=['stdbuf -o L'],
+            parameters=[
+                {'tf_prefix': robot_name},
+                {'gps_frame': 'gps2'},
+                {'acceptable_var': 10.0},     
+                ],
+            remappings=[
+                    ('gps/world_odometry', 'gps2/odometry'),
+                    ('gps/fix', 'gps2/fix'),
                 ],
            ),
 ])
