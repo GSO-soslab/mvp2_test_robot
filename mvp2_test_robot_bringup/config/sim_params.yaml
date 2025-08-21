@@ -21,3 +21,10 @@
       dvl_in: /mvp2_test_robot/dvl/stonefish/raw
       dvl_out: /mvp2_test_robot/dvl/twist
       dvl_alt_out: /mvp2_test_robot/dvl/altitude
+
+/mvp2_test_robot/modem_driver_node:
+    ros__parameters:
+      modem_received_topic: /mvp2_test_robot/modem/received_data
+      modem_send_topic: /mvp2_test_robot/modem/data_to_send
+      modem_received_bytearray_topic: /mvp2_test_robot/modem/rx
+      modem_send_bytearray_topic: /mvp2_test_robot/modem/tx
