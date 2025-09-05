@@ -28,7 +28,7 @@ def generate_launch_description():
         # ),
         #udp
         Node(
-            package = 'mvp_c2',
+            package = 'mvp_c2_messenger',
             namespace = robot_name,
             executable='mvp_c2_udp_comm',
             name = 'reporter_c2_udp_comm',
@@ -42,7 +42,7 @@ def generate_launch_description():
         ),
         #DCCL reporter node
         Node(
-            package = 'mvp_c2',
+            package = 'mvp_c2_messenger',
             namespace = robot_name,
             executable='mvp_c2_reporter_ros',
             name='mvp_c2_reporter',
@@ -57,5 +57,17 @@ def generate_launch_description():
                 ('mvp_helm/set_waypoints', 'bhv_path_following/update_waypoints')
             ]
         ),
+        Node(
+            package= 'mvp_c2_traffic_manager',
+            namespace=robot_name,
+            executable='mvp_c2_traffic_manager',
+            name='mvp_c2_traffic_manager',
+            output='screen',
+            prefix=['stdbuf -o L'],
+            parameters=[
+                {'type': "acomms"},
+            ],
+            # arguments=["--ros-args", "--log-level", "debug"],
+        )
 
     ])
