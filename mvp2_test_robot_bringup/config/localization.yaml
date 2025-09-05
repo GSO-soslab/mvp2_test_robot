@@ -149,12 +149,11 @@
 
 
 
-
 /mvp2_test_robot/world_odom_transform_node:
   ros__parameters:
     acceptable_var: 5.0
     m_gps_wait_time: 30.0
     datum_latitude: 41.0
     datum_longitude: -71.0
-    position_accuracy: 3.0
+    # manual_position_covariance: 0.0
     mag_declination_auto: false

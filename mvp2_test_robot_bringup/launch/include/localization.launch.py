@@ -62,7 +62,8 @@ def generate_launch_description():
             parameters=[
                 {'tf_prefix': robot_name},
                 {'gps_frame': 'gps2'},
-                {'acceptable_var': 10.0},     
+                {'acceptable_var': 10.0}, 
+                {'manual_position_covariance': 0.0}    
                 ],
             remappings=[
                     ('gps/world_odometry', 'gps2/odometry'),
