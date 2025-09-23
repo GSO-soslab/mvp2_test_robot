@@ -86,7 +86,7 @@ bhv_path_following:
 bhv_surfacing:
   default_bhv_world_link: world_ned
   default_bhv_child_link: cg_link
-  no_gps_timeout: 20.0
+  no_gps_timeout: 60.0
   surfacing_duration: 10.0
   surfacing_depth: 0.0
   navigation_fail_state: start
@@ -95,11 +95,11 @@ bhv_surfacing:
   dvl_topic: dvl/twist
   imu_topic: imu/data
 
-# bhv_altitude_tracking:
-#   desired_altitude: 10.0 #distance from the bottom always positive
-#   altitude_tracking_mode: 0  # 0: safety mode 1:bottom altitude tracking
-#   altitude_measurement_topic: dvl/altitude
-#   desired_altitude_topic: desired_altitude
-#   pitch_gain: 0.0
-#   pitch_assist_band: 0.5
-#   max_pitch: 0.35
+bhv_altitude_tracking:
+  desired_altitude: 10.0 #distance from the bottom always positive
+  altitude_tracking_mode: 0  # 0: safety mode 1:bottom altitude tracking
+  altitude_measurement_topic: dvl/altitude
+  desired_altitude_topic: desired_altitude
+  pitch_gain: 0.0
+  pitch_assist_band: 0.5
+  max_pitch: 0.35
