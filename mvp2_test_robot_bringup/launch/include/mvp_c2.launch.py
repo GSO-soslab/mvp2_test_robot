@@ -27,19 +27,19 @@ def generate_launch_description():
         #     ]
         # ),
         #udp
-        Node(
-            package = 'mvp_c2_messenger',
-            namespace = robot_name,
-            executable='mvp_c2_udp_comm',
-            name = 'reporter_c2_udp_comm',
-            output='screen',
-            prefix=['stdbuf -o L'],
-            parameters=[reporter_setting_file],
-            remappings=[
-                ('dccl_msg_tx', 'mvp_c2/dccl_msg_tx'),
-                ('dccl_msg_rx', 'mvp_c2/dccl_msg_rx'),
-            ]
-        ),
+        # Node(
+        #     package = 'mvp_c2_messenger',
+        #     namespace = robot_name,
+        #     executable='mvp_c2_udp_comm',
+        #     name = 'reporter_c2_udp_comm',
+        #     output='screen',
+        #     prefix=['stdbuf -o L'],
+        #     parameters=[reporter_setting_file],
+        #     remappings=[
+        #         ('dccl_msg_tx', 'mvp_c2/dccl_msg_tx'),
+        #         ('dccl_msg_rx', 'mvp_c2/dccl_msg_rx'),
+        #     ]
+        # ),
         #DCCL reporter node
         Node(
             package = 'mvp_c2_messenger',
@@ -54,7 +54,9 @@ def generate_launch_description():
                 ('local/geopose', 'odometry/geopose'),
                 ('joy', 'mvp_helm/bhv_teleop/joy'),
                 ('mvp_helm/path', 'bhv_path_following/get_next_waypoints'),
-                ('mvp_helm/set_waypoints', 'bhv_path_following/update_waypoints')
+                ('mvp_helm/set_waypoints', 'bhv_path_following/update_waypoints'),
+                ('mvp_c2/dccl_msg_tx', 'mvp_c2/acomms/tx_request'),
+                ('mvp_c2/dccl_msg_rx', 'mvp_c2/acomms/rx'),
             ]
         ),
         Node(
@@ -66,6 +68,7 @@ def generate_launch_description():
             prefix=['stdbuf -o L'],
             parameters=[
                 {'type': "acomms"},
+                {'config': "vehicle"}
             ],
             # arguments=["--ros-args", "--log-level", "debug"],
         )

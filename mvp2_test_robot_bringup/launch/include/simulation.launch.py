@@ -19,7 +19,7 @@ def generate_launch_description():
     simulation_rate = "100"
     window_res_x = "1200"
     window_res_y = "800"
-    rendering_quality ="high"
+    rendering_quality ="low"
 
     robot_param_path = os.path.join(
         get_package_share_directory(robot_bringup),
@@ -78,15 +78,19 @@ def generate_launch_description():
             name="pressure_sensor_node",
             parameters=[
                 {'frame_id': robot_name + '/world'}]
-        )
+        ),
 
         Node(
             package="world_of_stonefish",
             executable="modem_driver_node",
             namespace=robot_name,
-            name="modem_driver_node",
-            parameters=[
-                {'frame_id': robot_name + '/world'}]
-        )
+            name="modem_driver_node"
+        ),
 
+        Node(
+            package="world_of_stonefish",
+            executable="modem_driver_node",
+            namespace="acomm_buoy",
+            name="modem_driver_node"
+        )
     ])

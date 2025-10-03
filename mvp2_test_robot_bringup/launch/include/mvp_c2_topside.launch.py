@@ -9,8 +9,8 @@ from ament_index_python.packages import get_package_share_directory
 
 
 def generate_launch_description():
-    robot_name = 'mvp2_test_robot'
-    robot_bringup = robot_name + '_bringup'
+    robot_name = 'acomm_buoy'
+    robot_bringup = 'mvp2_test_robot' + '_bringup'
     topside_setting_file = os.path.join(get_package_share_directory(robot_bringup), 'config', 'mvp_c2.yaml') 
 
     return LaunchDescription([
@@ -29,29 +29,47 @@ def generate_launch_description():
         #     ]
         # ),
 
-        Node(
-            package = 'mvp_c2',
-            namespace = robot_name,
-            executable='mvp_c2_udp_comm',
-            name = 'commander_c2_udp_comm',
-            output='screen',
-            prefix=['stdbuf -o L'],
-            parameters=[topside_setting_file],
-            remappings=[
-                ('dccl_msg_tx', 'mvp_c2/dccl_msg_tx'),
-                ('dccl_msg_rx', 'mvp_c2/dccl_msg_rx'),
-            ]
-        ),
+        # Node(
+        #     package = 'mvp_c2',
+        #     namespace = robot_name,
+        #     executable='mvp_c2_udp_comm',
+        #     name = 'commander_c2_udp_comm',
+        #     output='screen',
+        #     prefix=['stdbuf -o L'],
+        #     parameters=[topside_setting_file],
+        #     remappings=[
+        #         ('dccl_msg_tx', 'mvp_c2/dccl_msg_tx'),
+        #         ('dccl_msg_rx', 'mvp_c2/dccl_msg_rx'),
+        #     ]
+        # ),
     #commander node
         Node(
-            package='mvp_c2',
+            package='mvp_c2_messenger',
             namespace=robot_name,
             executable='mvp_c2_commander_ros',
             name='mvp_c2_commander',
             output='screen',
             prefix=['stdbuf -o L'],
             parameters=[topside_setting_file],
+            remappings=[
+                ('mvp_c2/dccl_msg_tx', 'mvp_c2/acomms/tx_request'),
+                ('mvp_c2/dccl_msg_rx', 'mvp_c2/acomms/rx'),
+            ]
         ),
+
+        Node(
+            package= 'mvp_c2_traffic_manager',
+            namespace=robot_name,
+            executable='mvp_c2_traffic_manager',
+            name='mvp_c2_traffic_manager',
+            output='screen',
+            prefix=['stdbuf -o L'],
+            parameters=[
+                {'type': "acomms"},
+                {'config': "topside"}
+            ],
+            # arguments=["--ros-args", "--log-level", "debug"],
+        )
 
         # Node(
         #     package="joy",
