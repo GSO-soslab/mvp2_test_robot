@@ -74,9 +74,9 @@ def generate_launch_description():
         simulation,
         localization,
         description,
-        # mvp_control,
-        # mvp_mission,
-        foxglove
-        # usbl_test
+        mvp_control,
+        mvp_mission,
+        foxglove,
+        usbl_test
         # joy
     ])

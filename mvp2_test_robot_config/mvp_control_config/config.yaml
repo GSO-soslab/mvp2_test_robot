@@ -15,11 +15,16 @@ control_modes:
 
   ##good performance
   4dof:
-    z:        {p: 15.0,   i: 1.0,  d: 0.0,  v: 2.0, pid_max: 40, pid_min: -40}
+    z:        {p: 20.0,   i: 2.0,  d: 0.0,  v: 30.0, pid_max: 40, pid_min: -40}
     u:        {p: 50.0,    i: 20.0,   d: 0.0,   v: 1.0, pid_max: 60, pid_min: -40}
     pitch:    {p: 10.0,   i: 1.0,  d: 0.0,  v: 1.0, pid_max: 40, pid_min: -40}
     yaw:      {p: 10.0,   i: 0.5,   d: 0.0,  v: 10.0, pid_max: 30, pid_min: -30}
 
+  # 4dof:
+  #   z:        {p: 20.0,   i: 2.0,  d: 0.0,  v: 30.0, pid_max: 30, pid_min: -30}
+  #   u:        {p: 5.0,    i: 5.0,   d: 0.0,   v: 2.0, pid_max: 60, pid_min: -20}
+  #   pitch:    {p: 10.0,   i: 0.5,  d: 0.0,  v: 2.0, pid_max: 30, pid_min: -30}
+  #   yaw:      {p: 10.0,   i: 1.0,   d: 0.0,  v: 5.0, pid_max: 20, pid_min: -20}
 ###for generating bad PID
   # 4dof:
   #   z:        {p: 15.0,   i: 2.0,  d: 0.0,  pid_max: 40, pid_min: -40}

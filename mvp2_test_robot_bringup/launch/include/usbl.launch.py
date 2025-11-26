@@ -23,8 +23,8 @@ def generate_launch_description():
             prefix=['stdbuf -o L'],
             parameters=[
                 {'tf_prefix': robot_name},
-                {'use_reference_geopose_orientation': True},
-                {'geopose_frame_id': 'base_link'},
+                # {'use_reference_geopose_orientation': True},
+                # {'geopose_frame_id': 'base_link'},
                 ],
             remappings=[
                     ('reference_geopose', 'odometry/geopose'),
