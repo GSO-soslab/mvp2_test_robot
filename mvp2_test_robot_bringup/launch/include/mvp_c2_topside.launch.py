@@ -12,6 +12,7 @@ def generate_launch_description():
     robot_name = 'mvp2_test_robot'
     robot_bringup = robot_name + '_bringup'
     topside_setting_file = os.path.join(get_package_share_directory(robot_bringup), 'config', 'mvp_c2.yaml') 
+    topside_traffic_manager_file = os.path.join(get_package_share_directory(robot_bringup), 'config', 'mvp_c2_commander_traffic.yaml') 
 
     return LaunchDescription([
         
@@ -38,8 +39,8 @@ def generate_launch_description():
             prefix=['stdbuf -o L'],
             parameters=[topside_setting_file],
             remappings=[
-                ('dccl_msg_tx', 'mvp_c2/dccl_msg_tx'),
-                ('dccl_msg_rx', 'mvp_c2/dccl_msg_rx'),
+                ('dccl_msg_tx', 'mvp_c2/commander/dccl_msg_tx'),
+                ('dccl_msg_rx', 'mvp_c2/commander/dccl_msg_rx'),
             ]
         ),
     #commander node
@@ -51,6 +52,16 @@ def generate_launch_description():
             output='screen',
             prefix=['stdbuf -o L'],
             parameters=[topside_setting_file],
+        ),
+    # traffic manager
+        Node(
+            package='mvp_c2',
+            namespace=robot_name,
+            executable='mvp_c2_traffic_control_ros',
+            name='mvp_c2_traffic_control',
+            output='screen',
+            prefix=['stdbuf -o L'],
+            parameters=[topside_traffic_manager_file],
         ),
 
         # Node(
