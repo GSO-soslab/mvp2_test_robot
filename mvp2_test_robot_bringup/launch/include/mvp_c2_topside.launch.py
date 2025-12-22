@@ -39,8 +39,8 @@ def generate_launch_description():
             prefix=['stdbuf -o L'],
             parameters=[topside_setting_file],
             remappings=[
-                ('dccl_msg_tx', 'mvp_c2/commander/dccl_msg_tx'),
-                ('dccl_msg_rx', 'mvp_c2/commander/dccl_msg_rx'),
+                ('dccl_msg_tx', 'mvp_c2/traffic_control/dccl_msg_controlled_tx'),
+                ('dccl_msg_rx', 'mvp_c2/traffic_control/dccl_msg_rx'),
             ]
         ),
     #commander node
@@ -52,6 +52,10 @@ def generate_launch_description():
             output='screen',
             prefix=['stdbuf -o L'],
             parameters=[topside_setting_file],
+            remappings=[
+                ('mvp_c2/commander/dccl_msg_tx', 'mvp_c2/traffic_control/dccl_msg_tx'),
+                ('mvp_c2/commander/dccl_msg_rx', 'mvp_c2/traffic_control/dccl_msg_controlled_rx'),
+            ]
         ),
     # traffic manager
         Node(

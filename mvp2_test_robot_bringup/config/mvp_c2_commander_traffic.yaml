@@ -7,7 +7,7 @@ mvp2_test_robot/mvp_c2_traffic_control:
     dynamic_buffer:
       max_total_size: 150 # how many dccl message entries will be stored
       overflow_remove_by_time: False
-      dccl_intake_message_list: ["Joy", "SetPower", "SetController", "SetHelm", "SetWpt", "RosLaunch"]
+      dccl_intake_message_list: ["Joy", "SetPowerPort", "SetController", "SetHelm", "SetWpt", "RosLaunch"]
 
     # --- Message Specific Rules ---
     message_rules:
@@ -15,7 +15,7 @@ mvp2_test_robot/mvp_c2_traffic_control:
         priority: 10
         ttl_seconds: 100
 
-      SetPower:
+      SetPowerPort:
         priority: 9
         ttl_seconds: 100
 
