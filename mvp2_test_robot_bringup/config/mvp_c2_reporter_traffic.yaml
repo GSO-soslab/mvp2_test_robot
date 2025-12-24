@@ -3,6 +3,12 @@ mvp2_test_robot/mvp_c2_traffic_control:
 
     max_frame_size: 200  #maximum size per transmission packet
     tx_interval: 2.0
+    tdma_enable: False
+
+    tdma:
+      slot_id: 2
+      role: "slave"
+
     # --- Buffer Global Settings ---
     dynamic_buffer:
       max_total_size: 150 # how many dccl message entries will be stored
