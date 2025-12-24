@@ -2,7 +2,7 @@ mvp2_test_robot/mvp_c2_traffic_control:
   ros__parameters:
 
     max_frame_size: 100  #maximum size per transmission packet
-
+    tx_interval: 1.0
     # --- Buffer Global Settings ---
     dynamic_buffer:
       max_total_size: 150 # how many dccl message entries will be stored
