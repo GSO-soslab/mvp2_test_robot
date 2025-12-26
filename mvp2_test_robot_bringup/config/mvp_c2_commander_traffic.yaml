@@ -7,9 +7,9 @@ mvp2_test_robot/mvp_c2_traffic_control:
     tdma_enable: False
 
     tdma:
-      slot_id: 1
+      slot_id: 0
       role: "master"
-      slot_duration: 1
+      slot_duration: 1.0
       num_slots: 5
       slot_guard_time_ms: 100
       sync_slot_interval: 5

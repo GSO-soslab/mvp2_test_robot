@@ -6,7 +6,7 @@ mvp2_test_robot/mvp_c2_traffic_control:
     tdma_enable: False
 
     tdma:
-      slot_id: 2
+      slot_id: 1
       role: "slave"
 
     # --- Buffer Global Settings ---
