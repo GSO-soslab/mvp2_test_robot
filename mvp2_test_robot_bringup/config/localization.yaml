@@ -6,8 +6,8 @@
     transform_time_offset: 0.0
     transform_timeout: 0.0
     print_diagnostics: true
-    debug: false
-    debug_out_file: /path/to/debug/file.txt
+    debug: true
+    debug_out_file: /home/soslab/Develop/ros/fls_ws/src/mvp2_test_robot/robot_lolcaization_debug.txt
     permit_corrected_publication: false
     publish_acceleration: false
     publish_tf: true
@@ -16,6 +16,13 @@
     odom_frame: mvp2_test_robot/odom            # Defaults to "odom" if unspecified
     base_link_frame: mvp2_test_robot/base_link  # Defaults to "base_link" if unspecified
     world_frame: mvp2_test_robot/odom           # Defaults to the value of odom_frame if unspecified
+
+
+    # [x,     y,      z, 
+    #  roll,  pitch,  yaw, 
+    #  vx,    vy,     vz, 
+    #  vroll, vpitch, vyaw, 
+    #  ax,    ay,     az]
 
     #imu data input
     imu0: imu/data
